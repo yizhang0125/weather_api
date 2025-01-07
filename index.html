@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- External Stylesheet -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="weather-app">
+            <h1 class="text-center mb-4">Weather Forecast</h1>
+            <div class="search-container mb-4">
+                <form id="weather-form" class="d-flex justify-content-center">
+                    <input type="text" class="form-control me-2" id="city-input" placeholder="Enter city name" required>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Error Message (if any) -->
+            <div id="error-message" class="alert alert-danger mt-3 d-none"></div>
+
+            <!-- Weather Info Section -->
+            <div id="weather-info" class="mt-4 d-none"> <!-- Initially hidden -->
+                <div class="current-weather text-center mb-4">
+                    <h2 id="city-name">--</h2> <!-- Default value -->
+                    <p id="current-date">--</p> <!-- Default value -->
+                    <div class="weather-main d-flex justify-content-center align-items-center">
+                        <div class="temperature ms-3">
+                            <span id="temperature">--</span>°C <!-- Default value -->
+                        </div>
+                    </div>
+                    <p id="description">--</p> <!-- Default value -->
+                </div>
+
+                <!-- Weather Details (Humidity, Wind Speed, Pressure) -->
+                <div class="weather-details d-flex justify-content-between mb-4">
+                    <div class="detail text-center">
+                        <i class="fas fa-tint fa-2x"></i>
+                        <span>Humidity</span>
+                        <span id="humidity">--</span> <!-- Default value -->
+                    </div>
+                    <div class="detail text-center">
+                        <i class="fas fa-wind fa-2x"></i>
+                        <span>Wind Speed</span>
+                        <span id="wind-speed">--</span> <!-- Default value -->
+                    </div>
+                    <div class="detail text-center">
+                        <i class="fas fa-compress-arrows-alt fa-2x"></i>
+                        <span>Pressure</span>
+                        <span id="pressure">--</span> <!-- Default value -->
+                    </div>
+                </div>
+
+                <!-- 5-Day Weather Forecast -->
+                <div class="forecast card text-center mb-4">
+                    <h3>5-Day Forecast</h3>
+                    <div class="forecast-container row" id="forecast-container">
+                        <!-- Forecast items will be inserted here by JavaScript -->
+                        <!-- Leave empty when no search is done -->
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End of weather-app -->
+    </div> <!-- End of container-fluid -->
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS File -->
+    <script src="script.js"></script> 
+</body>
+</html>

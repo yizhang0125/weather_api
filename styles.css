@@ -1,0 +1,80 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #00b4db, #0083b0);
+    color: #333;
+    min-height: 100vh; /* Full height of the viewport */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: flex-start; /* Align items to the left */
+    margin: 0; /* Remove default margin */
+}
+
+/* Weather App Container */
+.weather-app {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Set a maximum width */
+    width: 100%; /* Full width on smaller screens */
+    margin-left: 600px; /* Adjust this value to move it further left or right */
+}
+
+/* Search Bar */
+.search-container {
+    margin-bottom: 2rem;
+}
+
+/* Current Weather Section */
+.current-weather {
+    border-radius: 10px;
+}
+
+.weather-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.temperature {
+    font-size: 3rem; /* Large font for temperature */
+}
+
+/* Weather Details Section */
+.weather-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail {
+    text-align: center;
+}
+
+.detail i {
+    font-size: 2rem; /* Increase icon size */
+}
+
+/* Forecast Section */
+.forecast h3 {
+    margin-bottom: 1rem; /* Space below forecast title */
+}
+
+.forecast-container {
+    display: flex; /* Flexbox for forecast items */
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    .weather-app {
+        padding: 1rem; /* Reduce padding on small screens */
+        border-radius: 0; /* Remove rounded corners on small screens */
+        margin-left: 10px; /* Adjust left margin for smaller screens */
+        margin-right: 10px; /* Adjust right margin for smaller screens */
+    }
+
+    .weather-details {
+        flex-direction: column; /* Stack details vertically on small screens */
+        gap: 1rem; /* Space between stacked items */
+    }
+}
