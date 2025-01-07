@@ -6,7 +6,7 @@ body {
     min-height: 100vh; /* Full height of the viewport */
     display: flex; /* Use flexbox */
     align-items: center; /* Center vertically */
-    justify-content: flex-start; /* Align items to the left */
+    justify-content: center; /* Center horizontally */
     margin: 0; /* Remove default margin */
 }
 
@@ -33,8 +33,17 @@ body {
 
 .weather-main {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.weather-icon {
+    width: 100px; /* Set a size for your weather icon */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.weather-icon:hover {
+    transform: scale(1.1); /* Scale up slightly on hover */
 }
 
 .temperature {
@@ -62,6 +71,27 @@ body {
 
 .forecast-container {
     display: flex; /* Flexbox for forecast items */
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Start slightly above */
+    }
+    
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+.forecast-item {
+    opacity: 0; /* Start hidden */
+}
+
+.forecast-item.fade-in {
+    animation: fadeIn 0.5s ease forwards; /* Apply fade-in animation */
 }
 
 /* Responsive Styles */

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const forecastContainer = document.getElementById('forecast-container');
 
     // Your actual WeatherAPI key
-    const API_KEY = '8e306c4d8c6849068c415159250701'; 
+    const API_KEY = '8e306c4d8c6849068c415159250701'; // Replace with your API key
     const API_URL = 'https://api.weatherapi.com/v1/current.json';
     const FORECAST_API_URL = 'https://api.weatherapi.com/v1/forecast.json';
 
@@ -78,14 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateWeatherInfo(data) {
         cityName.textContent = `${data.location.name}, ${data.location.country}`;
+        
         currentDate.textContent = new Date().toLocaleDateString();
 
         temperature.textContent = `${Math.round(data.current.temp_c)}°C`;
         description.textContent = data.current.condition.text; // Weather description
-        humidity.textContent = `${data.current.humidity}%`;
-        windSpeed.textContent = `${data.current.wind_kph} kph`; // Wind speed in kph
-        pressure.textContent = `${data.current.pressure_mb} hPa`; // Pressure in hPa
-        
+        humidity.textContent = `${data.current.humidity}%`; // Humidity in UI
+        windSpeed.textContent = `${data.current.wind_kph} kph`; // Wind speed in UI
+        pressure.textContent = `${data.current.pressure_mb} hPa`; // Pressure in UI
+
+        // Set the weather icon source URL.
+        const iconUrl = `https:${data.current.condition.icon}`;
+        document.getElementById("weather-icon").src = iconUrl; // Set the image source
+
         weatherInfo.classList.remove('d-none'); // Show weather info section
      }
 
@@ -98,11 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
            const tempMin = Math.round(day.day.mintemp_c);
            const iconUrl = `https:${day.day.condition.icon}`; // Icon URL
 
-           // Create forecast item
+           // Create forecast item with class for animation
            const forecastItem = `
-               <div class='forecast-item col'>
+               <div class='forecast-item col'> <!-- Added class 'forecast-item' -->
                    <h5>${dayName}</h5>
-                   <img src='${iconUrl}' alt='${day.day.condition.text}'>
+                   <img src='${iconUrl}' alt='${day.day.condition.text}' />
                    <p>${tempMax}°C / ${tempMin}°C</p>
                </div>`;
            
@@ -110,6 +115,14 @@ document.addEventListener('DOMContentLoaded', () => {
        });
        
        document.querySelector('.forecast').classList.remove('d-none'); // Show forecast section
+
+       // Add fade-in effect to each forecast item after rendering them.
+       setTimeout(() => {
+           document.querySelectorAll('.forecast-item').forEach((item, index) => {
+               item.style.animationDelay = `${index * 0.1}s`; // Stagger the animations
+               item.classList.add('fade-in');  // Add fade-in class for animation effect
+           });
+       }, 50);  
      }
 
      function showError(message) {
