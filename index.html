@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
@@ -11,70 +13,83 @@
     <!-- External Stylesheet -->
     <link href="styles.css" rel="stylesheet">
 </head>
-<body class="d-flex align-items-center justify-content-center min-vh-100 m-0"> 
-    <div class="container-fluid p-0">
-        <div class="weather-app">
-            <h1 class="text-center mb-4">Weather Forecast</h1>
-            <div class="search-container mb-4">
-                <form id="weather-form" class="d-flex justify-content-center">
-                    <input type="text" class="form-control me-2" id="city-input" placeholder="Enter city name" required>
-                    <button type="submit" class="btn btn-primary" id="submit-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Error Message (if any) -->
-            <div id="error-message" class="alert alert-danger mt-3 d-none"></div>
-
-            <!-- Weather Info Section -->
-            <div id="weather-info" class="mt-4 d-none"> 
-                <div class="current-weather text-center mb-4">
-                    <h2 id="city-name">--</h2> 
-                    <p id="current-date">--</p> 
-                    <div class="weather-main d-flex flex-column align-items-center"> 
-                        <div class="temperature mt-2"> 
-                            <span id="temperature">--</span>°C 
+<body>
+    <div class="dashboard-container">
+        <div class="weather-dashboard">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h1 class="app-title">Weather<span>Dashboard</span></h1>
+                <div class="search-container">
+                    <form id="weather-form">
+                        <div class="search-box">
+                            <input type="text" id="city-input" placeholder="Search for a city..." required>
+                            <button type="submit" id="submit-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
-                        <img id="weather-icon" src="" alt="Weather Icon" class="weather-icon mt-2" /> 
-                    </div>
-                    <p id="description">--</p> 
+                    </form>
                 </div>
-
-                <!-- Weather Details (Humidity, Wind Speed, Pressure) -->
-                <div class="weather-details d-flex justify-content-between mb-4">
-                    <div class="detail text-center">
-                        <i class="fas fa-tint fa-2x"></i>
-                        <span>Humidity</span>
-                        <span id="humidity">--</span> 
-                    </div>
-                    <div class="detail text-center">
-                        <i class="fas fa-wind fa-2x"></i>
-                        <span>Wind Speed</span>
-                        <span id="wind-speed">--</span> 
-                    </div>
-                    <div class="detail text-center">
-                        <i class="fas fa-compress-arrows-alt fa-2x"></i>
-                        <span>Pressure</span>
-                        <span id="pressure">--</span> 
-                    </div>
-                </div>
-
-                <!-- 5-Day Weather Forecast -->
-                <div class="forecast card text-center mb-4">
-                    <h3>5-Day Forecast</h3>
-                    <div class="forecast-container row" id="forecast-container">
-                        <!-- Forecast items will be inserted here by JavaScript -->
-                    </div>
-                </div>
+                <div id="error-message" class="alert alert-danger mt-3 d-none"></div>
             </div>
 
-        </div> 
-    </div> 
+            <!-- Main Content -->
+            <main class="main-content">
+                <div id="weather-info" class="d-none">
+                    <!-- Current Weather Card -->
+                    <div class="weather-card current-weather">
+                        <div class="weather-card-header">
+                            <h2 id="city-name">--</h2>
+                            <p id="current-date">--</p>
+                        </div>
+                        <div class="weather-card-body">
+                            <div class="weather-main">
+                                <img id="weather-icon" src="" alt="Weather Icon" class="weather-icon"/>
+                                <div class="weather-info">
+                                    <div class="temperature" id="temperature">--</div>
+                                    <div class="description" id="description">--</div>
+                                </div>
+                            </div>
+                            <div class="weather-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-tint"></i>
+                                    <div class="detail-info">
+                                        <span class="detail-label">Humidity</span>
+                                        <span class="detail-value" id="humidity">--</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-wind"></i>
+                                    <div class="detail-info">
+                                        <span class="detail-label">Wind Speed</span>
+                                        <span class="detail-value" id="wind-speed">--</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-compress-alt"></i>
+                                    <div class="detail-info">
+                                        <span class="detail-label">Pressure</span>
+                                        <span class="detail-value" id="pressure">--</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Forecast Section -->
+                    <div class="forecast">
+                        <h3>5-Day Forecast</h3>
+                        <div class="forecast-container" id="forecast-container">
+                            <!-- Forecast items will be inserted here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS File -->
-    <script src="script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>
